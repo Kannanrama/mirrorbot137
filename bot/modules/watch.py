@@ -41,10 +41,7 @@ def _watch(bot: Bot, update, isZip=False):
     except IndexError:
       name = ""
     reply_to = update.message.reply_to_message
-    if reply_to is not None:
-        tag = reply_to.from_user.username
-    else:
-        tag = None
+    tag = reply_to.from_user.username if reply_to is not None else None
     pswd = ""
     listener = MirrorListener(bot, update, pswd, isZip, tag)
     ydl = YoutubeDLHelper(listener)
